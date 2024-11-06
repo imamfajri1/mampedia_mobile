@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-
-class ItemHomepage {
-  final String name;
-  final IconData icon;
-  ItemHomepage(this.name, this.icon);
-}
+import 'package:mampedia_mobile/widgets/product_card.dart';
+import 'package:mampedia_mobile/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   final String npm = '23061655'; // NPM
@@ -32,7 +28,9 @@ class MyHomePage extends StatelessWidget {
         ),
         // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
         backgroundColor: Theme.of(context).colorScheme.primary,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      drawer: const LeftDrawer(),
       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -90,61 +88,6 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class ItemCard extends StatelessWidget {
-  final ItemHomepage item;
-
-  const ItemCard(this.item, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    Color? backgroundColor;
-    if (item.name == "Tambah Product") {
-      backgroundColor = Colors.lightGreen[700];
-    } else if (item.name == "Lihat Daftar Produk") {
-      backgroundColor = Colors.indigo[900];
-    } else if (item.name == "Logout") {
-      backgroundColor = Colors.red[900];
-    } else {
-      backgroundColor = Theme.of(context).colorScheme.secondary;
-    }
-
-    return Material(
-      color: backgroundColor,
-      borderRadius: BorderRadius.circular(12),
-      child: InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-              content: Text("Kamu telah menekan tombol ${item.name}!"),
-            ));
-        },
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
         ),
       ),
     );
