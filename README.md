@@ -181,4 +181,173 @@ child: InkWell(
         },
 ```
 </details>
+
+# Tugas 8 Flutter Navigation, Layouts, Forms, and Input Elements
+
+## Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+Kata kunci const digunakan ketika nilai variabel diketahui pada saat kompilasi dan tidak pernah berubah. Dengan kata lain, kompilator sudah mengetahui sebelumnya nilai apa yang akan disimpan dalam variabel tersebut.
+...
+`
+## Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+
+### Column
+`Column` adalah widget yang menyusun anak-anaknya secara vertikal dari atas ke bawah. Ini berguna ketika Anda ingin menempatkan beberapa widget dalam satu kolom.
+
+Contoh implementasi `Column`:
+```dart
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Icon(
+      item.icon,
+      color: Colors.white,
+      size: 30.0,
+    ),
+    const Padding(padding: EdgeInsets.all(3)),
+    Text(
+      item.name,
+      textAlign: TextAlign.center,
+      style: const TextStyle(color: Colors.white),
+    ),
+  ],
+),
+```
+
+### Row
+`Row` adalah widget yang menyusun anak-anaknya secara horizontal dari kiri ke kanan. Ini berguna ketika Anda ingin menempatkan beberapa widget dalam satu baris.
+
+Contoh implementasi `Row`:
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    InfoCard(title: 'NPM', content: npm),
+    InfoCard(title: 'Name', content: name),
+    InfoCard(title: 'Class', content: className),
+  ],
+),
+```
+
+### Perbandingan
+- `Column` menyusun widget secara vertikal, sedangkan `Row` menyusun widget secara horizontal.
+- `Column` cocok digunakan untuk tata letak yang memerlukan penumpukan widget dari atas ke bawah, sementara `Row` cocok untuk tata letak yang memerlukan penempatan widget dari kiri ke kanan.
+- Keduanya memiliki properti seperti `mainAxisAlignment` dan `crossAxisAlignment` untuk mengatur penyelarasan widget di sepanjang sumbu utama dan sumbu silang.
+
+Dengan memahami perbedaan dan penggunaan `Column` dan `Row`, Anda dapat membuat tata letak yang lebih fleksibel dan responsif dalam aplikasi Flutter Anda.
+
+...
+## Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+Pada halaman form yang saya buat, saya menggunakan beberapa elemen input berikut:
+- `TextFormField`: Digunakan untuk menerima input teks dari pengguna.
+
+
+Elemen input Flutter lain yang tidak saya gunakan pada tugas ini antara lain:
+- `Slider`: Digunakan untuk menerima input dalam bentuk nilai geser.
+- `DatePicker`: Digunakan untuk menerima input tanggal dari pengguna.
+- `TimePicker`: Digunakan untuk menerima input waktu dari pengguna.
+- `RangeSlider`: Digunakan untuk menerima input dalam bentuk rentang nilai geser.
+- `Stepper`: Digunakan untuk menerima input dalam bentuk langkah-langkah bertahap.
+- `Switch`: Digunakan untuk menerima input boolean dalam bentuk switch.
+- `DropdownButtonFormField`: Digunakan untuk menampilkan daftar pilihan dalam bentuk dropdown.
+- `Checkbox`: Digunakan untuk menerima input boolean dari pengguna.
+
+Setiap elemen input memiliki kegunaan dan konteks penggunaan yang berbeda-beda, tergantung pada kebutuhan aplikasi yang sedang dikembangkan.
+
+...
+
+## Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+Untuk mengatur tema dalam aplikasi Flutter agar konsisten, saya menggunakan `ThemeData` yang disediakan oleh Flutter. `ThemeData` memungkinkan kita untuk mendefinisikan warna, font, dan gaya visual lainnya yang akan digunakan di seluruh aplikasi. Berikut adalah langkah-langkah yang saya lakukan:
+
+1. **Mendefinisikan Tema Utama**:
+  Saya mendefinisikan tema utama aplikasi di dalam `MaterialApp` dengan menggunakan properti `theme`. Contohnya:
+  ```dart
+  MaterialApp(
+    theme: ThemeData(
+     primarySwatch: Colors.lightGreen,
+     ...
+    ),
+    home: MyHomePage(),
+  );
+  ```
+
+2. **Menggunakan Warna dan Gaya yang Konsisten**:
+  Saya memastikan untuk menggunakan warna dan gaya yang telah didefinisikan dalam `ThemeData` di seluruh widget aplikasi. Misalnya, menggunakan `Theme.of(context).colorScheme.primary` untuk mengambil warna utama yang telah didefinisikan.
+
+3. **Mengimplementasikan Tema**:
+  Ya, saya mengimplementasikan tema pada aplikasi yang saya buat. Contohnya, saya mengganti warna tema aplikasi menjadi warna hijau muda dengan menggunakan `ColorScheme.fromSwatch`:
+  ```dart
+  colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: Colors.lightGreen,
+  )
+  ```
+
+Dengan mengatur tema secara konsisten, aplikasi akan memiliki tampilan yang seragam dan profesional, serta memudahkan dalam melakukan perubahan gaya visual di masa depan.
+
+...
+
+## Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+Untuk menangani navigasi dalam aplikasi Flutter yang memiliki banyak halaman, saya menggunakan `Navigator` dan `Route`. Berikut adalah langkah-langkah yang saya lakukan:
+
+1. **Menggunakan Navigator**:
+  `Navigator` adalah widget yang mengelola stack dari `Route` dan memungkinkan kita untuk berpindah antar halaman. Kita dapat menggunakan metode seperti `push` dan `pop` untuk menambahkan atau menghapus halaman dari stack.
+
+  Contoh penggunaan `Navigator`:
+  ```dart
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => HalamanBaru()),
+  );
+  ```
+
+2. **Mendefinisikan Route**:
+  Saya mendefinisikan route di dalam `MaterialApp` untuk mempermudah navigasi. Route dapat didefinisikan dalam properti `routes` dari `MaterialApp`.
+
+  Contoh mendefinisikan route:
+  ```dart
+  MaterialApp(
+    routes: {
+     '/': (context) => HalamanUtama(),
+     '/halamanBaru': (context) => HalamanBaru(),
+    },
+  );
+  ```
+
+3. **Navigasi dengan Named Route**:
+  Dengan menggunakan named route, kita dapat melakukan navigasi dengan lebih mudah dan terstruktur.
+
+  Contoh navigasi dengan named route:
+  ```dart
+  Navigator.pushNamed(context, '/halamanBaru');
+  ```
+
+4. **Menggunakan onGenerateRoute**:
+  Untuk navigasi yang lebih dinamis dan kompleks, saya menggunakan `onGenerateRoute` untuk menangani route yang tidak didefinisikan secara eksplisit.
+
+  Contoh penggunaan `onGenerateRoute`:
+  ```dart
+  MaterialApp(
+    onGenerateRoute: (settings) {
+     if (settings.name == '/halamanBaru') {
+      return MaterialPageRoute(builder: (context) => HalamanBaru());
+     }
+     // Handle other routes
+     return null;
+    },
+  );
+  ```
+
+Dengan menggunakan `Navigator` dan `Route`, saya dapat mengelola navigasi dalam aplikasi Flutter dengan banyak halaman secara efisien dan terstruktur.
+
+
+...
+
+<details>
+<summary>Click for more detail</summary>
+<br>
+
+
+</detail>
 </details>
