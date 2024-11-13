@@ -184,6 +184,10 @@ child: InkWell(
 
 # Tugas 8 Flutter Navigation, Layouts, Forms, and Input Elements
 
+<details>
+<summary>Click for more detail</summary>
+<br>
+
 ## Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
 Kata kunci const digunakan ketika nilai variabel diketahui pada saat kompilasi dan tidak pernah berubah. Dengan kata lain, kompilator sudah mengetahui sebelumnya nilai apa yang akan disimpan dalam variabel tersebut.
 ...
@@ -285,68 +289,10 @@ Untuk mengatur tema dalam aplikasi Flutter agar konsisten, saya menggunakan `The
 
 Dengan mengatur tema secara konsisten, aplikasi akan memiliki tampilan yang seragam dan profesional, serta memudahkan dalam melakukan perubahan gaya visual di masa depan.
 
-...
 
 ## Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
 
-Untuk menangani navigasi dalam aplikasi Flutter yang memiliki banyak halaman, saya menggunakan `Navigator` dan `Route`. Berikut adalah langkah-langkah yang saya lakukan:
-
-1. **Menggunakan Navigator**:
-  `Navigator` adalah widget yang mengelola stack dari `Route` dan memungkinkan kita untuk berpindah antar halaman. Kita dapat menggunakan metode seperti `push` dan `pop` untuk menambahkan atau menghapus halaman dari stack.
-
-  Contoh penggunaan `Navigator`:
-  ```dart
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => HalamanBaru()),
-  );
-  ```
-
-2. **Mendefinisikan Route**:
-  Saya mendefinisikan route di dalam `MaterialApp` untuk mempermudah navigasi. Route dapat didefinisikan dalam properti `routes` dari `MaterialApp`.
-
-  Contoh mendefinisikan route:
-  ```dart
-  MaterialApp(
-    routes: {
-     '/': (context) => HalamanUtama(),
-     '/halamanBaru': (context) => HalamanBaru(),
-    },
-  );
-  ```
-
-3. **Navigasi dengan Named Route**:
-  Dengan menggunakan named route, kita dapat melakukan navigasi dengan lebih mudah dan terstruktur.
-
-  Contoh navigasi dengan named route:
-  ```dart
-  Navigator.pushNamed(context, '/halamanBaru');
-  ```
-
-4. **Menggunakan onGenerateRoute**:
-  Untuk navigasi yang lebih dinamis dan kompleks, saya menggunakan `onGenerateRoute` untuk menangani route yang tidak didefinisikan secara eksplisit.
-
-  Contoh penggunaan `onGenerateRoute`:
-  ```dart
-  MaterialApp(
-    onGenerateRoute: (settings) {
-     if (settings.name == '/halamanBaru') {
-      return MaterialPageRoute(builder: (context) => HalamanBaru());
-     }
-     // Handle other routes
-     return null;
-    },
-  );
-  ```
-
-Dengan menggunakan `Navigator` dan `Route`, saya dapat mengelola navigasi dalam aplikasi Flutter dengan banyak halaman secara efisien dan terstruktur.
-
-
-...
-
-<details>
-<summary>Click for more detail</summary>
-<br>
+Menggunakan **Navigator** dan **MaterialPageRoute** untuk mengatur perpindahan antar halaman dengan mudah. Dengan **Navigator**, saya dapat menambahkan atau menghapus halaman dari daftar, sehingga memudahkan navigasi. Untuk membuka halaman baru, saya menggunakan **Navigator.push** bersama **MaterialPageRoute**, yang menampilkan halaman dengan animasi bawaan, dan untuk kembali ke halaman sebelumnya, saya menggunakan **Navigator.pop**. Selain itu, saya memakai **Navigator.pushReplacement** untuk mengganti halaman saat ini dengan halaman baru, seperti saat berpindah dari halaman utama ke halaman tambah produk melalui menu drawer.
 
 
 </detail>
