@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mampedia_mobile/screens/menu.dart';
 import 'package:mampedia_mobile/screens/productentry_form.dart';
+import 'package:mampedia_mobile/screens/list_productentry.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -32,7 +35,8 @@ class LeftDrawer extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.normal,
-                    color: Colors.white,),
+                    color: Colors.white,
+                  ),
                 ),
               ],
             ),
@@ -55,10 +59,21 @@ class LeftDrawer extends StatelessWidget {
             // Bagian redirection ke MoodEntryFormPage
             onTap: () {
               Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProductEntryFormPage(),
+                  ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.list),
+            title: const Text('Daftar Product'),
+            onTap: () {
+              Navigator.push(
                 context,
                 MaterialPageRoute(
-                builder: (context) => const ProductEntryFormPage(),
-                ));
+                    builder: (context) => const ProductEntryPage()),
+              );
             },
           ),
         ],

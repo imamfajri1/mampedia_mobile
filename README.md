@@ -295,5 +295,66 @@ Dengan mengatur tema secara konsisten, aplikasi akan memiliki tampilan yang sera
 Menggunakan **Navigator** dan **MaterialPageRoute** untuk mengatur perpindahan antar halaman dengan mudah. Dengan **Navigator**, saya dapat menambahkan atau menghapus halaman dari daftar, sehingga memudahkan navigasi. Untuk membuka halaman baru, saya menggunakan **Navigator.push** bersama **MaterialPageRoute**, yang menampilkan halaman dengan animasi bawaan, dan untuk kembali ke halaman sebelumnya, saya menggunakan **Navigator.pop**. Selain itu, saya memakai **Navigator.pushReplacement** untuk mengganti halaman saat ini dengan halaman baru, seperti saat berpindah dari halaman utama ke halaman tambah produk melalui menu drawer.
 
 
-</detail>
+</details>
+
+
+# Tugas 9: Integrasi Layanan Web Django dengan Aplikasi Flutter
+<details>
+<summary>Click for more detail</summary>
+<br>
+## CheckList
+ 1. Mengimplementasikan fitur registrasi akun pada proyek tugas Flutter.
+    - Membuat form registrasi yang mengirim data ke server Django untuk membuat akun baru.
+ 2. Membuat halaman login pada proyek tugas Flutter.
+    - Membuat form login yang mengirim data ke server Django untuk autentikasi pengguna.
+ 3. Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.
+    - Menggunakan cookie untuk mengelola sesi pengguna dan memastikan pengguna tetap login.
+ 4. Membuat model kustom sesuai dengan proyek aplikasi Django.
+    - Membuat model data di Django yang sesuai dengan kebutuhan aplikasi Flutter.
+ 5. Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah kamu deploy.
+    - Mengambil data item dari endpoint JSON dan menampilkannya dalam daftar di Flutter.
+    - Tampilkan name, price, dan description dari masing-masing item pada halaman ini.
+ 6. Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.
+    - Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item.
+    - Tampilkan seluruh atribut pada model item kamu pada halaman ini.
+    - Tambahkan tombol untuk kembali ke halaman daftar item.
+ 7. Melakukan filter pada halaman daftar item dengan hanya menampilkan item yang terasosiasi dengan pengguna yang login.
+    - Menampilkan hanya item yang dimiliki oleh pengguna yang sedang login.
+
+ ## Pertanyaan
+ ### Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?
+Membuat model untuk pengambilan atau pengiriman data JSON penting untuk memastikan struktur data yang konsisten dan validasi data. Tanpa model, data yang diterima atau dikirim mungkin tidak sesuai dengan yang diharapkan, yang dapat menyebabkan error atau data yang tidak valid.
+
+### Jelaskan fungsi dari library http yang sudah kamu implementasikan pada tugas ini
+Library `http` digunakan untuk melakukan permintaan HTTP ke server Django. Ini memungkinkan aplikasi Flutter untuk berkomunikasi dengan backend, seperti mengambil data, mengirim data, dan melakukan autentikasi.
+
+### Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+`CookieRequest` digunakan untuk mengelola sesi dan autentikasi pengguna dengan menyimpan cookie yang diterima dari server Django. Instance `CookieRequest` perlu dibagikan ke semua komponen agar sesi pengguna tetap konsisten di seluruh aplikasi.
+
+### Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
+1. Pengguna memasukkan data ke dalam form di aplikasi Flutter.
+2. Data dikirim ke server Django menggunakan `CookieRequest`.
+3. Server Django memproses data dan mengembalikan respons.
+4. Aplikasi Flutter menerima respons dan menampilkan data yang relevan kepada pengguna.
+
+### Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+1. **Register:**
+   - Pengguna memasukkan data registrasi di Flutter.
+   - Data dikirim ke Django untuk pembuatan akun.
+   - Django mengembalikan respons sukses atau gagal.
+   - Flutter menampilkan pesan sesuai respons.
+
+2. **Login:**
+   - Pengguna memasukkan data login di Flutter.
+   - Data dikirim ke Django untuk autentikasi.
+   - Django mengembalikan cookie sesi jika berhasil.
+   - Flutter menyimpan cookie dan menavigasi ke halaman utama.
+
+3. **Logout:**
+   - Pengguna menekan tombol logout di Flutter.
+   - Flutter mengirim permintaan logout ke Django.
+   - Django menghapus sesi dan mengembalikan respons.
+   - Flutter menghapus cookie dan menavigasi ke halaman login.
+
+</details>
 </details>
