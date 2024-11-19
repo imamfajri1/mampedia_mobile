@@ -302,6 +302,7 @@ Menggunakan **Navigator** dan **MaterialPageRoute** untuk mengatur perpindahan a
 <details>
 <summary>Click for more detail</summary>
 <br>
+
 ## CheckList
  1. Mengimplementasikan fitur registrasi akun pada proyek tugas Flutter.
     - Membuat form registrasi yang mengirim data ke server Django untuk membuat akun baru.
